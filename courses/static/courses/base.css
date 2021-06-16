@@ -1,0 +1,10 @@
+
+body{
+    overflow-x: hidden;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.heading-font{
+    font-family: 'Mate SC', serif;
+}

@@ -1,0 +1,21 @@
+.my-navbar {
+    background-color: #a53692;
+}
+.my-navbar a {
+    font-size: 1.2rem;
+}
+a.navbar-brand {
+    font-size: 1.5rem;
+}
+ul.navbar-nav {
+    margin: auto;
+    width: fit-content;
+}
+
+.nav-item {
+    border-bottom: 2px solid #a53692;
+}
+.nav-item:hover{
+    color: #a53692;
+    border-bottom: 2px solid white;
+}

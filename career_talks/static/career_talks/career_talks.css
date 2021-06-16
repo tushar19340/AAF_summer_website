@@ -1,0 +1,45 @@
+.gray {
+    color: gray;
+}
+.talk-details a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.filter {
+    margin-bottom: 5rem;
+}
+.filter button {
+    width: 8rem;
+    margin-top: 1rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    
+}
+button.active {
+    background-color: #d413b456;
+}
+.filter p {
+    color: gray;
+    width: 8rem;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.btn-view {
+    background-color: #a53692;
+    padding: 0.3rem;
+    width: 5rem;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    border: 2px solid #a53692;
+    color: white;
+    transition: background-color 0.3s;
+}
+.btn-view:hover {
+    background-color: white;
+    color: #a53692;
+}

@@ -1,0 +1,26 @@
+
+div.playlist {
+    /* border: 1px solid gray; */
+    
+    height: 75vh;
+    overflow-y: scroll;
+}
+
+div.playlist::-webkit-scrollbar {
+    width: 10px; 
+}
+
+div.playlist::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+div.playlist::-webkit-scrollbar-thumb {
+    background: #A53692;
+}
+.list-group-item.active {
+    background-color: #A53692;
+    border: #A53692;
+}
+.tabs-div {
+    padding: 1rem;
+}

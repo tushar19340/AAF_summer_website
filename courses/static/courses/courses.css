@@ -1,0 +1,35 @@
+.d-flex .btn{
+    border: 2px solid var(--btn-primary);
+    border-radius: 1.2rem;
+    transition: color 0.4s ease-in, background-color 0.4s ease-in;
+}
+.d-flex .btn:hover{
+    color: #ffffff;
+    background-color: #a53692;
+} 
+
+
+.card{
+    margin: 0.5rem;
+    border: white;
+    box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%)!important;
+}
+.card img{
+    display: block;
+    border-radius: 0 50% 0 50%;
+    transition: border-radius 0.5s;
+    /* border-radius: 100%; */
+    /* margin: 15px auto; */
+    width:100%;
+}
+div.card:hover img.card-img-top {
+    border-radius: 0%;
+}
+footer span{
+    color: white;    
+}
+footer a{
+    color: white;
+    text-decoration: none;
+}
+

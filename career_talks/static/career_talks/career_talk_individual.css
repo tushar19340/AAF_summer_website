@@ -1,0 +1,23 @@
+
+.container {
+    width: 60%;
+    margin-top: 6rem;
+}
+.talk-details a{
+    text-decoration: none;
+    color: inherit;
+}
+.yt-video {
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.gray {
+    color: gray;
+}
+
+@media only screen and (max-width: 800px){
+    .container {
+        width: 100%;
+    }
+}
