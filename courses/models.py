@@ -14,3 +14,14 @@ class Question(models.Model):
     choice = models.ManyToManyField(Choice, blank = True)
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
+
+class Course(models.Model):
+    title=models.CharField(max_length=100)
+    description=models.TextField(null=True)
+    playlist_link=models.CharField(max_length=200)
+    date_added=models.DateTimeField(auto_now_add=True)
+    image_link=models.CharField(max_length=200)
+
+    @staticmethod
+    def getCourses():
+        return Course.objects.all()

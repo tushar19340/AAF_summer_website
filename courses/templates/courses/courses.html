@@ -17,6 +17,36 @@
         All Courses
     </h1>
     <div class="row row-cols-1 row-cols-md-3 gy-5">
+    {% for course in courses%}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <img
+                        src={{course.image_link}}
+                        class="card-img-top"
+                        alt=""
+                    />
+                    <h5
+                        class="card-title text-center"
+                        style="margin-top: 1.2rem"
+                    >
+                        {{course.title}}
+                    </h5>
+                    <p class="card-text">
+                        {{course.description}}
+                    </p>
+                    <div class="text-center">
+                        <a href="{% url 'details' course.id %}" class="">
+                            <button class="btn btn-outline-info">
+                                View Tutorials
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {%endfor%}
+    
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">

@@ -1,11 +1,12 @@
 from django.db import models
 
 # Create your models here.
-def Category():
+class Category(models.Model):
     name=models.CharField(max_length=50)
 
-def Item():
+class Career_Talk(models.Model):
     title=models.CharField(max_length=200)
-    sub_text=models.CharField(max_length=1000)
+    sub_text=models.TextField(null=True)
     video_link=models.CharField(max_length=100)
     image_url=models.CharField(max_length=100)
+    date_added=models.DateTimeField(auto_now_add=True)
