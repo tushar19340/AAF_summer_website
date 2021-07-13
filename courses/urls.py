@@ -4,6 +4,6 @@ from courses import views
 
 urlpatterns = [
     path("", views.courses),
-    path("/course_playlist", views.course_playlist),
+    path("course_playlist", views.course_playlist),
     path("<int:course_id>/",views.details,name="details")
 ]

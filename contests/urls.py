@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from courses import views
+from contests import views
 
 urlpatterns = [
-    path("", views.courses),
-    path("/id", views.courses),
+    path("", views.contests),
+    path("<int:contest_id>", views.contests_individual),
 ]

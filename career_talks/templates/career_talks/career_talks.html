@@ -8,64 +8,56 @@
 
 {% block body %}
 
-<div class="container">
+<div class="wrapper">
     <div class="heading text-center mb-4">
-        <h1 class="heading-font">Career Talks</h1>
+        <h1 class="">Career Talks</h1>
     </div>
 
     <!-- <div class="sub-heading text-center">
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam temporibus consequatur provident velit magnam ipsa voluptate ab, facere eaque eveniet?</p>
     </div> -->
 
-    <div class="filter d-flex flex-wrap justify-content-center align-items-center">
-        <div class="">
-            <p>Category</p>
-        </div>
-        <div class="All">
-            <button class="btn btn-default active mx-3">
-                All
-            </button>
-        </div>
-        <div class="ML">
-            <button class="btn btn-default">Category-1</button>
-        </div>
-        <div class="genomics">
-            <button class="btn btn-default mx-3">
-                Category-2
-            </button>
-        </div>
-        <div class="other">
-            <button class="btn btn-default">
-                Category-3
-            </button>
-        </div>
-    </div>
+    <div class="row">
+        <div class="col-12 col-md-9 order-1 order-md-0">
+            
+            {% for talk in career_talks %}
+                <div class="row my-5 career-talk">
+                    <div class="col-lg-6 p-0">
+                        <div class="ratio ratio-16x9">
+                            {{talk.embeded_video_link | safe}}
+                        </div>
+                    </div>
+                    <div class="col-lg-6 talk-details">
+                        <h2><a href="">{{talk.title}}</a></h2>
+                        <div class="talk-text gray">
+                            <p>
+                                {{talk.description | safe}}
+                            </p>
+                        </div>
+                        <button class="btn-view"><a href="/career_talks/{{talk.id}}">View</a></button>
+                    </div>
+                </div>
+            {% endfor %}
 
-    <div class="row my-5 career-talk">
-        <div class="col-lg-6 p-0">
-            <div class="ratio ratio-16x9">
-                <iframe
-                    src="https://www.youtube.com/embed/Aa7OhQlIWzM"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
+        </div>
+
+        <div class="col-12 col-md-3 order-0 order-md-1">
+            <div class="filter-div mb-5">
+                <h3 class="text-center">FILTER</h3>
+                <div class="filter-input">
+                    <form action="/career_talks/" method="GET">
+                        {% csrf_token %}
+                        {% for option in filters %}
+                            <input type="checkbox" id="{{option.name}}" name="filter_list" value="{{option.name}}" {% if option.name in active_filters %} checked {% endif %}>
+                            <label for="{{option.name}}">{{option.name}}</label><br>
+                        {% endfor %}
+                        <button class="btn btn-primary w-100" type="submit">Apply</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="col-lg-6 talk-details">
-            <h1><a href="">Heading</a></h1>
-            <div class="talk-text gray">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit. Quidem perferendis laudantium quos, mollitia
-                    accusamus maiores ipsum pariatur rerum blanditiis minima
-                    sint hic. Natus fugit, cupiditate eum dolores nihil quae
-                    aspernatur!
-                </p>
-            </div>
-            <button class="btn-view"><a href="career_talks/id">View</a></button>
-        </div>
+
+
     </div>
     
     

@@ -4,5 +4,5 @@ from career_talks import views
 
 urlpatterns = [
     path("", views.career_talks),
-    path("/id", views.career_talk_individual),
+    path("<int:talk_id>", views.career_talk_individual),
 ]

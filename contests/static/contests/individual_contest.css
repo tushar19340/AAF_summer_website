@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 50%;
+    margin-bottom: 10rem;
+}
+.contest-details h1 {
+    font-family: 'Mate SC', serif;
+}
+.contest-details {
+    margin: auto;
+}
+.contest-details img {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+.desc {
+    margin-top: 1rem;
+}
+.desc p {
+    color: gray;
+}
+.submissions-header {
+    font-family: 'Mate SC', serif;
+    text-align: center;
+
+}
+.submissions h2 {
+    
+}
+.card-header {
+    background-color: white;
+    
+}
+.card img {
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 700px) {
+    .container {
+        width: 100%;
+    }
+}

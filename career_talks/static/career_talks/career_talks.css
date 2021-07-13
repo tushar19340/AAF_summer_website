@@ -43,3 +43,9 @@ button.active {
     background-color: white;
     color: #a53692;
 }
+
+div.wrapper {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+}

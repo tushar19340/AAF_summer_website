@@ -1,0 +1,77 @@
+{% extends 'contests/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'contests/contests.css' %}" />
+
+{% endblock stylesheets %}
+
+{% block body %}
+
+
+<div class="wrapper">
+    <h1 class="text-start text-md-center" style="margin-bottom: 2rem">
+        Contests
+    </h1>
+    <hr/>
+    <!-- Cards -->
+
+    <div class="row">
+        <div class="col-12 col-md-9 order-1 order-md-0">
+
+            <div class="row row-cols-1 row-cols-md-3 gy-5">
+                {% for contest in contests %}
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="{{contest.image_url}}"
+                                class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{contest.name}}</h5>
+                                <p class="card-text text-center">{{contest.description}}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Starts: </strong>{{contest.start_date}}
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Ends: </strong>{{contest.end_date}}
+                                </li>
+                                <!-- <li class="list-group-item">
+                                    <strong>Last-Date to Register: </strong>{{contest.description}}
+                                </li> -->
+                                <li class="list-group-item">
+                                    <a href="/contests/{{contest.id}}" class="btn btn-primary btn-apply w-100">
+                                        Register
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+        
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md-3 order-0 order-md-1">
+            <div class="filter-div mb-5">
+                <h3 class="text-center">FILTER</h3>
+                <div class="filter-input">
+                    <form action="/contests" method="GET">
+                        {% csrf_token %}
+                        {% for option in filters %}
+                            <input type="checkbox" id="{{option.name}}" name="filter_list" value="{{option.name}}" {% if option.name in active_filters %} checked {% endif %}>
+                            <label for="{{option.name}}">{{option.name}}</label><br>
+                        {% endfor %}
+                        <button class="btn btn-primary w-100" type="submit">Apply</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock body %}

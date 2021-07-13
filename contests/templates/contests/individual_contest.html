@@ -1,0 +1,45 @@
+{% extends 'contests/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'contests/individual_contest.css' %}" />
+
+{% endblock stylesheets %}
+
+{% block body %}
+
+
+
+<div class="container">
+        <div class="contest-details">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="">
+            <h1 class="my-4 text-center">{{contest.name}}</h1>
+            <div class="desc">
+                <p>{{contest.info | safe}}</p>
+            </div>
+        </div>
+        
+        <div class="submissions">
+            <div class="submissions-header py-4">
+                <h2>
+                    User Entries
+                </h2>
+            </div>
+            <div class="card">
+                <div class="card-header py-3"><strong>Username</strong></div>
+                <img src="https://images.unsplash.com/photo-1488554378835-f7acf46e6c98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Heading</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga architecto ipsum blanditiis minus quisquam accusantium obcaecati quis consequuntur illum sit!</p>
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                  <p class="card-text"><small class="text-muted">3 mins ago</small></p>
+                </div>
+              </div>
+        </div>
+
+    </div>
+    
+
+
+
+{% endblock body %}
