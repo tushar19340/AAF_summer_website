@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import Permission, User
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -22,5 +23,10 @@ class Contest(models.Model):
 
     def __str__(self):
         return self.name
+
+class Submissions(models.Model):
+    user= models.ForeignKey(User,on_delete=models.CASCADE)
+    url= models.TextField(null=True)
+
 
 
