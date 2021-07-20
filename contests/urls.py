@@ -4,5 +4,6 @@ from contests import views
 
 urlpatterns = [
     path("", views.contests),
+    path("<int:contest_id>/submit", views.ContestSubmit),
     path("<int:contest_id>", views.contests_individual),
 ]

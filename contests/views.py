@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from contests import models
 
 # Create your views here.
@@ -43,3 +43,8 @@ def contests_individual(request, contest_id):
     }
 
     return render(request, 'contests/individual_contest.html', context)
+
+def ContestSubmit(request, contest_id):
+    print(request.POST['image_url'])
+    models.Submission.objects.create(user_id=request.user, caption=request.POST['caption'], image_url=request.POST['image_url'], video_url=request.POST['video_url'], contest=models.Contest.objects.get(pk=contest_id))
+    return redirect("/contests/"+str(contest_id))

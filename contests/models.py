@@ -24,9 +24,14 @@ class Contest(models.Model):
     def __str__(self):
         return self.name
 
-class Submissions(models.Model):
-    user= models.ForeignKey(User,on_delete=models.CASCADE)
-    url= models.TextField(null=True)
+class Submission(models.Model):
+    user_id= models.ForeignKey(User,on_delete=models.CASCADE, related_name="user_id")
+    contest= models.ForeignKey(Contest,on_delete=models.CASCADE)
+    caption=models.TextField(null=True)
+    likes=models.ManyToManyField(User,null=True)
+    image_url= models.TextField(null=True)
+    video_url=models.TextField(null=True)
+    status=models.BooleanField(default=False)
 
 
 
