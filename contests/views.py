@@ -48,6 +48,16 @@ def contests_individual(request, contest_id):
     return render(request, 'contests/individual_contest.html', context)
 
 def ContestSubmit(request, contest_id):
-    print(request.POST['image_url'])
     models.Submission.objects.create(user_id=request.user, caption=request.POST['caption'], image_url=request.POST['image_url'], video_url=request.POST['video_url'], contest=models.Contest.objects.get(pk=contest_id))
     return redirect("/contests/"+str(contest_id))
+
+def SubmissionLike(request, submission_id):
+    submission= models.Submission.objects.get(pk=submission_id)
+    if request.user in submission.likes.all():
+        print("removed")
+        submission.likes.remove(request.user)
+    else:
+        submission.likes.add(request.user)
+        print("added")
+    submission.save()
+    return redirect("/contests/"+str(submission.contest.id))
