@@ -70,6 +70,22 @@
             </a>
             {% endif %}
         </div>
+
+        <!-- Submission -->
+        <div class="row">
+            {% for submission in submissions%}
+            <div class="col-md-4">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                      <img src="{{ submission.image_url}}" class="card-img-top" alt="{{ submission.image_url}}">
+                      <div class="card-body">
+                        <h5 class="card-title">Submitted by {{submission.user_id.username}}</h5>
+                              <p class="card-text">{{submission.caption}}</p>
+                              <p class="card-text">Video_url={{submission.video_url}}</p>
+                      </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
     </div>
     
 

@@ -35,11 +35,14 @@ def contests(request):
 def contests_individual(request, contest_id):
 
     contest = models.Contest.objects.get(pk=contest_id)
+    #add filter for status
+    submissions=models.Submission.objects.all().filter(contest=contest_id)
 
     print(contest)
 
     context = {
-        'contest': contest
+        'contest': contest,
+        'submissions': submissions
     }
 
     return render(request, 'contests/individual_contest.html', context)
