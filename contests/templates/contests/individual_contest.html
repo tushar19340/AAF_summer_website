@@ -1,6 +1,6 @@
 {% extends 'contests/base.html' %}
 {% load static %}
-
+{% load socialaccount %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static 'contests/individual_contest.css' %}" />
 
@@ -41,6 +41,7 @@
         <div class="container">
             <h1 id="oh2" class="text-center">Create your Submission</h1>
             <p id="p1">Note: All fields are mandatory. </p>
+            {% if user.is_authenticated %}
             <form action="/contests/{{contest.id}}/submit" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
@@ -63,6 +64,11 @@
                     <button type="submit" class="btn btn-lg" id="btn-submit">Submit</button>
                 </div>
             </form>
+            {%else%}
+            <a href="{% provider_login_url 'google' %}" class="btn btn-primary btn-apply w-100">
+                Login First
+            </a>
+            {% endif %}
         </div>
     </div>
     
