@@ -1,6 +1,6 @@
 {% extends 'contests/base.html' %}
 {% load static %}
-
+{% load socialaccount %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{% static 'contests/individual_contest.css' %}" />
 
@@ -37,6 +37,77 @@
               </div>
         </div>
 
+        <!-- Form -->
+        <div class="container">
+            <h1 id="oh2" class="text-center">Create your Submission</h1>
+            <p id="p1">Note: All fields are mandatory. </p>
+            {% if user.is_authenticated %}
+            <form action="/contests/{{contest.id}}/submit" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="formGroupExampleInput">Caption</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="caption" required>
+                  </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Image URL</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" name="image_url">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Video URL</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" name="video_url">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I here by declare that the project report/Write up/ Critical Analysis or any kind similar nature of work submitted by me to Parvaaz Parindey by Asha Akansha Foundation , is a record of bonafide work carried out by me, with no kind of plagiarism. All due credits are given to resources cited. I further declare that the work reported in this has not been submitted and will not be submitted, either in part or in full, for the award of any other organization or any other institutions.</label>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg" id="btn-submit">Submit</button>
+                </div>
+            </form>
+            {%else%}
+            <a href="{% provider_login_url 'google' %}" class="btn btn-primary btn-apply w-100">
+                Login First
+            </a>
+            {% endif %}
+        </div>
+
+        <!-- Submission -->
+        <div class="row">
+            {% for submission in submissions%}
+            <div class="col-md-4">
+                <div class="card shadow p-3 mb-5 bg-white rounded">
+                      <img src="{{ submission.image_url}}" class="card-img-top" alt="{{ submission.image_url}}">
+                      <div class="card-body">
+                        <h5 class="card-title">Submitted by {{submission.user_id.username}}</h5>
+                              <p class="card-text">{{submission.caption}}</p>
+                              <p class="card-text">Video_url={{submission.video_url}}</p>
+
+                              <!-- Likes -->
+                              <form action="/contests/submission/{{submission.id}}/like" method="POST">
+                                {% csrf_token %}
+                                <div class="btn-group mt-4">
+                                    {% if user.is_authenticated and user not in submission.likes %}
+                                    <button class="btn btn-danger"><i class="fas fa-heart"></i></button>
+                                    {% else %} 
+                                    <button class="btn btn-light" ><i class="fas fa-heart"></i></button>
+                                    {% endif %}
+
+                                    <button class="btn btn-danger">{{submission.likes.count}} 
+                                        {% if submission.likes.count == 0%}
+                                            Like
+                                        {% else %}
+                                            Likes
+                                        {% endif %}
+                                    </button>
+
+                                </div>
+                            </form>
+                      </div>
+
+                </div>
+            </div>
+            {%endfor%}
+        </div>
     </div>
     
 

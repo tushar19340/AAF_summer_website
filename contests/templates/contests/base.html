@@ -25,6 +25,7 @@
 </head>
 
 <body>
+	{% load socialaccount %}
 
 	<nav class="my-navbar navbar navbar-expand-lg navbar-dark fixed-top">
 		<div class="container-fluid">
@@ -62,6 +63,13 @@
 				</ul>
 			</div>
 		</div>
+		{% if user.is_authenticated %}
+			<a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
+		{%else%}
+		<a href="{% provider_login_url 'google' %}" class="btn btn-primary">
+			Login
+		</a>
+		{%endif%}
 	</nav>
 
 

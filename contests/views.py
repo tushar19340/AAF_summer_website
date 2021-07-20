@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from contests import models
 
 # Create your views here.
@@ -35,11 +35,29 @@ def contests(request):
 def contests_individual(request, contest_id):
 
     contest = models.Contest.objects.get(pk=contest_id)
+    #add filter for status
+    submissions=models.Submission.objects.all().filter(contest=contest_id)
 
     print(contest)
 
     context = {
-        'contest': contest
+        'contest': contest,
+        'submissions': submissions
     }
 
     return render(request, 'contests/individual_contest.html', context)
+
+def ContestSubmit(request, contest_id):
+    models.Submission.objects.create(user_id=request.user, caption=request.POST['caption'], image_url=request.POST['image_url'], video_url=request.POST['video_url'], contest=models.Contest.objects.get(pk=contest_id))
+    return redirect("/contests/"+str(contest_id))
+
+def SubmissionLike(request, submission_id):
+    submission= models.Submission.objects.get(pk=submission_id)
+    if request.user in submission.likes.all():
+        print("removed")
+        submission.likes.remove(request.user)
+    else:
+        submission.likes.add(request.user)
+        print("added")
+    submission.save()
+    return redirect("/contests/"+str(submission.contest.id))
