@@ -1,18 +1,36 @@
-.d-flex .btn{
-    border: 2px solid var(--btn-primary);
-    border-radius: 1.2rem;
-    transition: color 0.4s ease-in, background-color 0.4s ease-in;
-}
-.d-flex .btn:hover{
-    color: #ffffff;
+
+
+.top-div {
+    height: 50vh;
+    max-height: 700px;
     background-color: #a53692;
-} 
+    color: white;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.top-div-wrapper {
+    position: relative;
+    height: fit-content;
+    width: 80%;
+}
+
+.top-div h1 {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
 
 
 .card{
     margin: 0.5rem;
     border: white;
-    box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%)!important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .card img{
     display: block;

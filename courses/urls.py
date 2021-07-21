@@ -3,7 +3,6 @@ from django.urls import path, include
 from courses import views
 
 urlpatterns = [
-    path("", views.courses),
-    path("course_playlist", views.course_playlist),
-    path("<int:course_id>/",views.details,name="details")
+    path("", views.courses, name="course_home"),
+    path("<int:course_id>/", views.course_playlist, name="get_course"),
 ]

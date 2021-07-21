@@ -1,6 +1,8 @@
 
+.course-title {
+    margin-top: 110px;
+}
 div.playlist {
-    /* border: 1px solid gray; */
     
     height: 75vh;
     overflow-y: scroll;
@@ -20,6 +22,13 @@ div.playlist::-webkit-scrollbar-thumb {
 .list-group-item.active {
     background-color: #A53692;
     border: #A53692;
+}
+li.active a {
+    color: white;
+}
+div.list-group a {
+    text-decoration: none;
+    color: black;
 }
 .tabs-div {
     padding: 1rem;
