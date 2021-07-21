@@ -59,5 +59,6 @@ def SubmissionLike(request, submission_id):
     else:
         submission.likes.add(request.user)
         print("added")
+        
     submission.save()
     return redirect("/contests/"+str(submission.contest.id))

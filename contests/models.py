@@ -27,11 +27,21 @@ class Contest(models.Model):
 class Submission(models.Model):
     user_id= models.ForeignKey(User,on_delete=models.CASCADE, related_name="user_id")
     contest= models.ForeignKey(Contest,on_delete=models.CASCADE)
-    caption=models.TextField(null=True)
-    likes=models.ManyToManyField(User,null=True)
-    image_url= models.TextField(null=True)
-    video_url=models.TextField(null=True)
+    caption=models.TextField(blank=True, null=True)
+    likes=models.ManyToManyField(User, blank=True, null=True)
+    image_url= models.TextField(blank=True, null=True)
+    video_url=models.TextField(blank=True, null=True)
     status=models.BooleanField(default=False)
 
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
 
 

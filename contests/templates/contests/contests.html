@@ -10,11 +10,15 @@
 {% block body %}
 
 
+<div class="top-div">
+    <div class="top-div-wrapper text-center">
+        <h1 class="">Contests</h1>
+        <p class="font-body">
+            
+        </p>
+    </div>
+</div>
 <div class="wrapper">
-    <h1 class="text-start text-md-center" style="margin-bottom: 2rem">
-        Contests
-    </h1>
-    <hr/>
     <!-- Cards -->
 
     <div class="row">
@@ -41,15 +45,9 @@
                                     <strong>Last-Date to Register: </strong>{{contest.description}}
                                 </li> -->
                                 <li class="list-group-item">
-                                    {% if user.is_authenticated %}
                                     <a href="/contests/{{contest.id}}" class="btn btn-primary btn-apply w-100">
                                         Register
                                     </a>
-                                    {% else %}
-                                    <a href="{% provider_login_url 'google' %}" class="btn btn-primary btn-apply w-100">
-                                        Register
-                                    </a>
-                                    {% endif %}
                                 </li>
                             </ul>
                         </div>

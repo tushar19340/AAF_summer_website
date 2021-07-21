@@ -11,106 +11,117 @@
 
 
 <div class="container">
-        <div class="contest-details">
-            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="">
-            <h1 class="my-4 text-center">{{contest.name}}</h1>
-            <div class="desc">
-                <p>{{contest.info | safe}}</p>
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="contest-details">
+                    <img src="{{contest.image_url}}" alt="">
+                    <h1 class="my-4 text-center">{{contest.name}}</h1>
+                    <div class="contest-desc">
+                        <p>{{contest.info | safe}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                
+                <!-- Form -->
+                <div class="submit-entry">
+                    <h3 id="oh2" class="text-center mb-4">Create your Submission</h3>
+                    {% if user.is_authenticated %}
+                    <form action="/contests/{{contest.id}}/submit" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group my-3">
+                            <label for="formGroupExampleInput">Image URL</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" name="image_url">
+                        </div>
+                        <div class="form-group my-3">
+                        <label for="formGroupExampleInput">Caption</label>
+                            <textarea type="text" class="form-control" id="formGroupExampleInput" name="caption" required></textarea>
+                        </div>
+                        <!-- <div class="form-group my-3">
+                            <label for="formGroupExampleInput">Video URL</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" name="video_url">
+                        </div> -->
+                        <div class="form-group my-3">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I here by declare that the project report/Write up/ Critical Analysis or any kind similar nature of work submitted by me to Parvaaz Parindey by Asha Akansha Foundation , is a record of bonafide work carried out by me, with no kind of plagiarism. All due credits are given to resources cited. I further declare that the work reported in this has not been submitted and will not be submitted, either in part or in full, for the award of any other organization or any other institutions.</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-lg btn-primary w-100" id="btn-submit">Submit</button>
+                        </div>
+                    </form>
+                    <p class="mt-4"><strong>Important:</strong> Once you have made your submission, Our team will check it and approve it. Once it is approved, your submissions will be shown below</p>
+                    {%else%}
+                    <p>Please first login to make your submission</p>
+                    <p><strong>Important:</strong> Once you have made your submission, Our team will check it and approve it. Once it is approved, your submissions will be shown below</p>
+                    <a href="{% provider_login_url 'google' %}" class="btn btn-primary btn-apply w-100">
+                        Login First
+                    </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         
-        <div class="submissions">
-            <div class="submissions-header py-4">
-                <h2>
-                    User Entries
-                </h2>
-            </div>
-            <div class="card">
-                <div class="card-header py-3"><strong>Username</strong></div>
-                <img src="https://images.unsplash.com/photo-1488554378835-f7acf46e6c98?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Heading</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga architecto ipsum blanditiis minus quisquam accusantium obcaecati quis consequuntur illum sit!</p>
-                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                  <p class="card-text"><small class="text-muted">3 mins ago</small></p>
-                </div>
-              </div>
+        <!-- <div class="submissions-header py-4">
+            <h2>
+                User Entries
+            </h2>
+        </div> -->
+        <div class="line-heading">
+            <h2 class="">Submissions</h2>
+            <div class="underline"></div>
         </div>
 
-        <!-- Form -->
-        <div class="container">
-            <h1 id="oh2" class="text-center">Create your Submission</h1>
-            <p id="p1">Note: All fields are mandatory. </p>
-            {% if user.is_authenticated %}
-            <form action="/contests/{{contest.id}}/submit" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-group">
-                <label for="formGroupExampleInput">Caption</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" name="caption" required>
-                  </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Image URL</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="image_url">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Video URL</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="video_url">
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">I here by declare that the project report/Write up/ Critical Analysis or any kind similar nature of work submitted by me to Parvaaz Parindey by Asha Akansha Foundation , is a record of bonafide work carried out by me, with no kind of plagiarism. All due credits are given to resources cited. I further declare that the work reported in this has not been submitted and will not be submitted, either in part or in full, for the award of any other organization or any other institutions.</label>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-lg" id="btn-submit">Submit</button>
-                </div>
-            </form>
-            {%else%}
-            <a href="{% provider_login_url 'google' %}" class="btn btn-primary btn-apply w-100">
-                Login First
-            </a>
-            {% endif %}
-        </div>
 
         <!-- Submission -->
         <div class="row">
             {% for submission in submissions%}
-            <div class="col-md-4">
-                <div class="card shadow p-3 mb-5 bg-white rounded">
-                      <img src="{{ submission.image_url}}" class="card-img-top" alt="{{ submission.image_url}}">
-                      <div class="card-body">
-                        <h5 class="card-title">Submitted by {{submission.user_id.username}}</h5>
-                              <p class="card-text">{{submission.caption}}</p>
-                              <p class="card-text">Video_url={{submission.video_url}}</p>
-
-                              <!-- Likes -->
-                              <form action="/contests/submission/{{submission.id}}/like" method="POST">
+            <div class="submissions">
+                <div class="submission-card">
+                    <div class="card">
+                        <div class="card-header py-3"><strong>{{submission.user_id.username}}</strong></div>
+                        <img src="{{ submission.image_url}}" class="card-img-top" alt="...">
+                        <!-- <p class="card-text">Video_url={{submission.video_url}}</p> -->
+                        <div class="card-body">
+                          <h5 class="card-title">Heading</h5>
+                          <p class="card-text">{{submission.caption | safe}}</p>
+                          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                          <!-- <p class="card-text"><small class="text-muted">3 mins ago</small></p> -->
+                          <!-- Likes -->
+                          <span class="">{{submission.likes.count}} 
+                                {% if submission.likes.count == 0%}
+                                    Like
+                                {% else %}
+                                    Likes
+                                {% endif %}
+                            </span>
+                            <form action="/contests/submission/{{submission.id}}/like" method="POST">
                                 {% csrf_token %}
                                 <div class="btn-group mt-4">
-                                    {% if user.is_authenticated and user not in submission.likes %}
-                                    <button class="btn btn-danger"><i class="fas fa-heart"></i></button>
+                                    {% if user.is_authenticated and user not in submission.likes.all %}
+                                        <button class="btn btn-primary">Like</i></button>
                                     {% else %} 
-                                    <button class="btn btn-light" ><i class="fas fa-heart"></i></button>
+                                        <button class="btn btn-light">Liked</i></button>
                                     {% endif %}
-
-                                    <button class="btn btn-danger">{{submission.likes.count}} 
-                                        {% if submission.likes.count == 0%}
-                                            Like
-                                        {% else %}
-                                            Likes
-                                        {% endif %}
-                                    </button>
-
                                 </div>
                             </form>
-                      </div>
-
+                        </div>
+                    </div>
                 </div>
             </div>
             {%endfor%}
         </div>
     </div>
     
-
+	
+{% block jsScript %}
+    <script>
+		CKEDITOR.replace( 'caption' );
+		console.log(CKEDITOR.config)
+		// CKEDITOR.config.removeButtons = 'Image';
+		
+	</script>
+{% endblock jsScript %}
 
 
 {% endblock body %}
