@@ -1,0 +1,23 @@
+{% extends 'research_centers/base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'research_centers/individual_activity.css' %}" />
+{% endblock stylesheets %}
+
+{% block body %}
+
+
+
+<div class="container">
+    
+    <div class="activity">
+        <img src="{{activity.image_url}}" alt="">
+        <p>{{activity.text | safe}}</p>
+    </div>
+
+
+</div>
+
+{% endblock body %}

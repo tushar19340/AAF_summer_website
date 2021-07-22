@@ -1,0 +1,43 @@
+{% extends 'research_centers/base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'research_centers/research_centers.css' %}" />
+{% endblock stylesheets %}
+
+{% block body %}
+
+
+<div class="top-div">
+    <div class="top-div-wrapper text-center">
+        <h1 class="">Research Centers</h1>
+        <p class="font-body">
+            
+        </p>
+    </div>
+</div>
+<div class="container mb-5">
+    
+
+    <div class="row row-cols-1 row-cols-md-3 gy-5">
+
+        {% for center in research_centers %}
+            <div class="col">
+
+                <div class="card h-100" >
+                    <img src="{{center.image_url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{center.name}}</h5>
+                      <p class="card-text">{{center.info | slice:":100" | safe}}</p>
+                    </div>
+                    <a class="btn btn-primary btn-md mb-3 mx-2 " href="{{center.id}}">Visit</a>
+                </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+
+</div>
+
+{% endblock body %}

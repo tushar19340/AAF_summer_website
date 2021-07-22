@@ -1,0 +1,25 @@
+
+/* ------------------ Navbar CSS ------------------ */
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+ul.navbar-nav {
+    margin-left: auto;
+}
+li.nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-bottom: 0.3rem;
+    font-size: 1rem;
+}
+li.nav-item.active {
+    border-bottom: 2px solid #a53692;
+}
+
+nav.navbar {
+    background-color: white !important;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%) !important;
+}
+
+/* ------------------------------------ */
