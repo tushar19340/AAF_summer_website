@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'courses',
     'career_talks',
     'contests',
+    'research_centers',
     'ckeditor',
 ]
 

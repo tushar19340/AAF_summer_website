@@ -12,9 +12,6 @@
 <div class="top-div">
     <div class="top-div-wrapper text-center">
         <h1 class="">Courses</h1>
-        <p class="font-body">
-            
-        </p>
     </div>
 </div>
 <div class="container">
@@ -22,12 +19,12 @@
         {% for course in courses%}
             <div class="col">
                 <div class="card h-100">
+                    <img
+                        src={{course.image_link}}
+                        class="card-img-top"
+                        alt=""
+                    />
                     <div class="card-body">
-                        <img
-                            src={{course.image_link}}
-                            class="card-img-top"
-                            alt=""
-                        />
                         <h5
                             class="card-title text-center"
                             style="margin-top: 1.2rem"
