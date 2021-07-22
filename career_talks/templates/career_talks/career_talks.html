@@ -8,10 +8,15 @@
 
 {% block body %}
 
-<div class="wrapper">
-    <div class="heading text-center mb-4">
+<div class="top-div">
+    <div class="top-div-wrapper text-center">
         <h1 class="">Career Talks</h1>
+        <p class="font-body">
+            
+        </p>
     </div>
+</div>
+<div class="wrapper">
 
     <!-- <div class="sub-heading text-center">
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam temporibus consequatur provident velit magnam ipsa voluptate ab, facere eaque eveniet?</p>
@@ -22,27 +27,35 @@
             
             {% for talk in career_talks %}
                 <div class="row my-5 career-talk">
-                    <div class="col-lg-6 p-0">
-                        <div class="ratio ratio-16x9">
-                            {{talk.embeded_video_link | safe}}
+                    {% if talk.embeded_video_link %}
+                        <div class="col-lg-6 p-0">
+                            <div class="ratio ratio-16x9">
+                                {{talk.embeded_video_link | safe}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 talk-details">
-                        <h2><a href="">{{talk.title}}</a></h2>
-                        <div class="talk-text gray">
-                            <p>
-                                {{talk.description | safe}}
-                            </p>
+                    {% else %}
+                        <div class="col-lg-6 p-0">
+                            <div class="talk-image">
+                                <img src="{{talk.image_url}}" alt="">
+                            </div>
                         </div>
-                        <button class="btn-view"><a href="/career_talks/{{talk.id}}">View</a></button>
-                    </div>
+                    {% endif %}
+                        <div class="col-lg-6 talk-details">
+                            <h2><a href="">{{talk.title}}</a></h2>
+                            <div class="talk-text gray">
+                                <p>
+                                    {{talk.description |slice:":400" | safe}} ...
+                                </p>
+                            </div>
+                            <button class="btn-view"><a href="/career_talks/{{talk.id}}">View</a></button>
+                        </div>
                 </div>
             {% endfor %}
 
         </div>
 
         <div class="col-12 col-md-3 order-0 order-md-1">
-            <div class="filter-div mb-5">
+            <div class="filter-div">
                 <h3 class="text-center">FILTER</h3>
                 <div class="filter-input">
                     <form action="/career_talks/" method="GET">
