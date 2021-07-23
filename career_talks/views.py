@@ -1,15 +1,18 @@
 from django.shortcuts import render, HttpResponse
 from career_talks import models
 
+
+# fetch all the career talks
 def career_talks(request):
 
     Career_Talks = models.Career_Talk.objects.all()
-    Categories = models.Category.objects.all()
+    Categories = models.Category.objects.all() # All the categories we have (to show the filter option on frontend)
 
     requested_filters = request.GET.getlist('filter_list')
 
     print(requested_filters)
-    filtered_talks = []
+    
+    filtered_talks = [] # Filtered talks list
     
     if(len(requested_filters) > 0):
         for talk in Career_Talks:
@@ -30,6 +33,12 @@ def career_talks(request):
 
     return render(request, 'career_talks/career_talks.html', context)
 
+# Fetch a particular career talk
 def career_talk_individual(request, talk_id):
+    career_talk = models.Career_Talk.objects.get(pk = talk_id)
 
-    return render(request, 'career_talks/career_talk_individual.html')
+    context = {
+        'career_talk' : career_talk
+    }
+
+    return render(request, 'career_talks/career_talk_individual.html', context)

@@ -25,6 +25,8 @@
 </head>
 
 <body>
+	{% load socialaccount %}
+
 	<!-- Social Bar -->
 	<div class="icon-bar">
 		<a href="https://www.facebook.com/ashaakankshafoundation" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a> 
@@ -69,6 +71,28 @@
 					<li class="nav-item active">
 						<a class="nav-link active" href="/career_talks">Career Talks</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/research_centers"
+							>Research Center</a
+						>
+					</li>
+					{% if user.is_authenticated %}
+					<li class="nav-item">
+						<a
+							href="{% url 'account_logout' %}"
+							class="nav-link"
+							><strong>Logout</strong></a
+						>
+					</li>
+					{%else%}
+					<li class="nav-item">
+						<a
+							href="{% provider_login_url 'google' %}"
+							class="nav-link"
+							><strong>Login</strong></a
+						>
+					</li>
+					{%endif%}
 				</ul>
 			</div>
 		</div>

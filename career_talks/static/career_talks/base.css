@@ -1,16 +1,4 @@
 
-::-webkit-scrollbar {
-    width: 0.5rem;
-}
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #a53692;
-}
-
-
 body{
     overflow-x: hidden;
     padding-bottom: 5rem;

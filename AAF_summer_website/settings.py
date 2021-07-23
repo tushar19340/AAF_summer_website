@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,6 +54,7 @@ INSTALLED_APPS = [
     'contests',
     'research_centers',
     'ckeditor',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +138,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 YOUTUBE_DATA_API_KEY = 'AIzaSyC3biMiTsP8TySKY3-HIaUVO1X-l6WvRwE'
+
+cloudinary.config( 
+  cloud_name = "tusharbharti4863", 
+  api_key = "671712797671574", 
+  api_secret = "plMDdx9JTJyTLcJt61pwnvX6xb8",
+  secure = True,
+)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

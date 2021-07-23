@@ -9,22 +9,25 @@
 {% block body %}
 
 <div class="container">
-    <div class="yt-video">
-        <div class="ratio ratio-16x9">
-            <iframe
-                src="https://www.youtube.com/embed/Aa7OhQlIWzM"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-            ></iframe>
+    {% if career_talk.image_url %}
+        <div class="talk-image">
+            <img src="{{career_talk.image_url}}" class="w-100" alt="">
         </div>
-    </div>
+    {% endif %}
+
+    {% if career_talk.embeded_video_link %}
+        <div class="yt-video">
+            <div class="ratio ratio-16x9">
+                {{career_talk.embeded_video_link}}
+            </div>
+        </div>
+    {% endif %}
     <div class="talk-details">
-        <h1 id="headd"><a href="">Heading</a></h1>
+        <h1 id="head"><a href="">{{career_talk.title}}</a></h1>
+
         <div class="talk-text gray">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum minima nisi facilis nobis iusto magni minus! Veniam at eius numquam voluptates quas, accusamus velit maiores atque ipsam voluptatibus magni dignissimos libero rerum, repellendus illum odio unde? Vel repellendus architecto culpa aut, quae quos libero perspiciatis tenetur sit adipisci officiis doloremque debitis explicabo illum ab esse tempore est aspernatur, atque sunt assumenda. Illo dolor soluta amet ipsum dolorem odio? Quae voluptatem est tempora minima distinctio numquam harum? Architecto rem odio nulla! Iure maiores eius itaque quam sequi exercitationem fugit maxime excepturi facere officia, sit eum, facilis nulla a minima obcaecati perspiciatis.
+                {{career_talk.description | safe}}
             </p>
         </div>
     </div>

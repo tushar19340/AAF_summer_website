@@ -28,26 +28,30 @@
             {% for talk in career_talks %}
                 <div class="row my-5 career-talk">
                     {% if talk.embeded_video_link %}
-                        <div class="col-lg-6 p-0">
+                        <div class="col-md-6 p-0">
                             <div class="ratio ratio-16x9">
                                 {{talk.embeded_video_link | safe}}
                             </div>
                         </div>
                     {% else %}
-                        <div class="col-lg-6 p-0">
+                        <div class="col-md-6 p-0">
                             <div class="talk-image">
                                 <img src="{{talk.image_url}}" alt="">
                             </div>
                         </div>
                     {% endif %}
-                        <div class="col-lg-6 talk-details">
-                            <h2><a href="">{{talk.title}}</a></h2>
-                            <div class="talk-text gray">
-                                <p>
-                                    {{talk.description |slice:":400" | safe}} ...
-                                </p>
+                        <div class="col-md-6 ">
+                            <div class="talk-details">
+                                <div class="talk-body">
+                                    <h2><a href="">{{talk.title}}</a></h2>
+                                    <div class="talk-text gray">
+                                        <p>
+                                            {{talk.description| safe}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <a href="{{talk.id}}"><button class="btn-purple">View</button></a>
                             </div>
-                            <button class="btn-view"><a href="/career_talks/{{talk.id}}">View</a></button>
                         </div>
                 </div>
             {% endfor %}
