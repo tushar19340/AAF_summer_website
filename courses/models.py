@@ -1,12 +1,13 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
 
 class Course(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField("Course decription", max_length=200)
     playlist_id = models.CharField("Youtube playlist url", max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
-    image_link = models.CharField("Course Display Image", max_length=200)
+    image_link = CloudinaryField('image')
 
     def __str__(self):
         return self.title
