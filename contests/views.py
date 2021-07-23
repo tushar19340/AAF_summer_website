@@ -37,18 +37,22 @@ def contests_individual(request, contest_id):
     contest = models.Contest.objects.get(pk=contest_id)
     #add filter for status
     submissions=models.Submission.objects.all().filter(contest=contest_id)
+    showform=True
+    if models.Submission.objects.filter(user_id=request.user,contest=models.Contest.objects.get(pk=contest_id)).count()>0:
+        showform=False
 
     print(contest)
 
     context = {
         'contest': contest,
-        'submissions': submissions
+        'submissions': submissions,
+        'showform': showform
     }
 
     return render(request, 'contests/individual_contest.html', context)
 
 def ContestSubmit(request, contest_id):
-    models.Submission.objects.create(user_id=request.user, caption=request.POST['caption'], image_url=request.POST['image_url'], video_url=request.POST['video_url'], contest=models.Contest.objects.get(pk=contest_id))
+    models.Submission.objects.create(user_id=request.user, caption=request.POST['caption'], image_url=request.POST['image_url'], contest=models.Contest.objects.get(pk=contest_id))
     return redirect("/contests/"+str(contest_id))
 
 def SubmissionLike(request, submission_id):

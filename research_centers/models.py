@@ -5,7 +5,7 @@ from cloudinary.models import CloudinaryField
 
 class Research_Center(models.Model):
     name = models.CharField(max_length=250)
-    image_url = models.CharField(max_length=250)
+    image_url = CloudinaryField('image')
     short_description = models.TextField(blank=True, null=True)
     info = RichTextField()
 
@@ -15,7 +15,7 @@ class Research_Center(models.Model):
 
 class Activity(models.Model):
     title = models.CharField(max_length=200)
-    image_url = models.CharField(max_length=250)
+    image_url = CloudinaryField('image')
     text = RichTextField()
     research_center = models.ForeignKey(Research_Center,on_delete=models.CASCADE)
 
