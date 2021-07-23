@@ -1,0 +1,40 @@
+
+.center {
+    margin-top: 110px;
+}
+
+.center-image img {
+    width: 100%;
+}
+
+div.center-name {
+    background-color: lightblue;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.activities-wrapper {
+    background-color: white;
+}
+
+div.activities {
+    width: clamp(300px, 90vw, 1500px);
+    margin: auto;
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+}
+
+.card.join-us-card {
+    width: 30%;
+}
+div.join-us-card {
+    position: fixed;
+    right: 10px;
+    top: calc(50% + 53px);
+    transform: translateY(-50%);
+    z-index: -1;
+}
