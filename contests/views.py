@@ -36,7 +36,7 @@ def contests_individual(request, contest_id):
 
     contest = models.Contest.objects.get(pk=contest_id)
     #add filter for status
-    submissions=models.Submission.objects.all().filter(contest=contest_id)
+    submissions=models.Submission.objects.all().filter(contest=contest_id,status=True)
     showform=True
     if models.Submission.objects.filter(user_id=request.user,contest=models.Contest.objects.get(pk=contest_id)).count()>0:
         showform=False
