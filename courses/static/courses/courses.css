@@ -43,6 +43,24 @@
 div.card:hover img.card-img-top {
     border-radius: 0%;
 }
+.btn-purple {
+    background-color: #a53692;
+    padding: 0.3rem;
+    width: 70%;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    border: 2px solid #a53692;
+    color: white;
+    transition: background-color 0.3s;
+    /* position: absolute;
+    bottom: 0; */
+
+}
+.btn-purple:hover {
+    background-color: white;
+    color: #a53692;
+}
 footer span{
     color: white;    
 }
