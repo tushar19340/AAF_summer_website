@@ -16,7 +16,7 @@ class Career_Talk(models.Model):
     title = models.CharField(max_length = 200)
     description = RichTextField("Description", null = True)
     embeded_video_link = models.TextField(blank=True, null=True)
-    image_url = CloudinaryField('image')
+    image_url = CloudinaryField('image', null=True)
     date_added = models.DateTimeField(auto_now_add = True)
     category = models.ManyToManyField(Category, null=True)
     is_active = models.BooleanField(default = True)
