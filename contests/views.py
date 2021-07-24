@@ -1,5 +1,9 @@
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from contests import models
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Create your views here.
 
@@ -70,3 +74,17 @@ def SubmissionLike(request, submission_id):
         
     submission.save()
     return redirect("/contests/"+str(submission.contest.id))
+
+
+def demo(request):
+
+    path = request.POST.get('file')
+    print(path)
+
+    cloudinary.uploader.upload(path, 
+        folder = "myfolder/mysubfolder/", 
+        public_id = "my_dog",
+        overwrite = True, 
+        resource_type = "image")
+
+    return HttpResponse(path)
