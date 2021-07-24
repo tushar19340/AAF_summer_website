@@ -30,7 +30,7 @@ class Submission(models.Model):
     caption=models.TextField(blank=True, null=True)
     likes=models.ManyToManyField(User, blank=True, null=True)
     image_url= models.TextField(blank=True, null=True)
-    video_url=models.TextField(blank=True, null=True)
+    # video_url=models.TextField(blank=True, null=True)
     status=models.BooleanField(default=False)
 
 
