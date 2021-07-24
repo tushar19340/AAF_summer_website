@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from contests import models
-
+from cloudinary import uploader
 # Create your views here.
 
 def contests(request):
@@ -56,7 +56,9 @@ def contests_individual(request, contest_id):
     return render(request, 'contests/individual_contest.html', context)
 
 def ContestSubmit(request, contest_id):
-    models.Submission.objects.create(user_id=request.user, caption=request.POST['caption'], image_url=request.POST['image_url'], contest=models.Contest.objects.get(pk=contest_id))
+    image=uploader.upload(request.FILES['image'])
+    print(image)
+    models.Submission.objects.create(user_id=request.user, caption=request.POST['caption'], image_url=image['url'],image_id=image['public_id'], contest=models.Contest.objects.get(pk=contest_id))
     return redirect("/contests/"+str(contest_id))
 
 def SubmissionLike(request, submission_id):
