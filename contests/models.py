@@ -16,7 +16,7 @@ class Contest(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField("Short Description",max_length=200, null=True)
     info = RichTextField("Information of Contest", null=True)
-    image_url = CloudinaryField('image')
+    image_url = CloudinaryField('image', null=True)
     start_date = models.DateField()
     end_date = models.DateField()
     category = models.ManyToManyField(Category, null=True)
