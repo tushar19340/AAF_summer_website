@@ -7,6 +7,24 @@ div.center-name {
     padding-bottom: 1rem;
     border-radius: 5px;
 }
+.btn-purple {
+    background-color: #a53692;
+    padding: 0.3rem;
+    width: 85%;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    border: 2px solid #a53692;
+    color: white;
+    transition: background-color 0.3s;
+    /* position: absolute;
+    bottom: 0; */
+
+}
+.btn-purple:hover {
+    background-color: white;
+    color: #a53692;
+}
 
 div.card {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
