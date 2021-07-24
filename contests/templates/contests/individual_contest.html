@@ -27,7 +27,7 @@
                 <!-- Form -->
                 <div class="submit-entry">
                     <h3 id="oh2" class="text-center mb-4">Create your Submission</h3>
-                    {% if user.is_authenticated %}
+                    {% if user.is_authenticated and showform %}
                     <form action="/contests/{{contest.id}}/submit" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group my-3">
@@ -48,6 +48,8 @@
                         </div>
                     </form>
                     <p class="mt-4"><strong>Important:</strong> Once you have made your submission, Our team will check it and approve it. Once it is approved, your submissions will be shown below</p>
+                    {% elif user.is_authenticated %}
+                    <p> You have already made a submission </p>
                     {%else%}
                     <p>Please first login to make your submission</p>
                     <p><strong>Important:</strong> Once you have made your submission, Our team will check it and approve it. Once it is approved, your submissions will be shown below</p>

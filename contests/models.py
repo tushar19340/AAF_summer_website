@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import Permission, User
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -15,7 +16,7 @@ class Contest(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField("Short Description",max_length=200, null=True)
     info = RichTextField("Information of Contest", null=True)
-    image_url = models.TextField(null=True)
+    image_url = CloudinaryField('image')
     start_date = models.DateField()
     end_date = models.DateField()
     category = models.ManyToManyField(Category, null=True)
