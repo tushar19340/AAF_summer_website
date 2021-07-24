@@ -6,7 +6,7 @@ class Contest_Admin(admin.ModelAdmin):
 
 
 class SubmissionAdmin(admin.ModelAdmin):
-    # list_display = ('user_id', 'contest')
+    list_display = ('user_id', 'contest')
     readonly_fields = ('user_id', 'contest', 'caption', 'likes', 'image',)
     
 admin.site.register(Contest, Contest_Admin)
