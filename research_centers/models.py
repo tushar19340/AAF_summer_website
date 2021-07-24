@@ -5,7 +5,8 @@ from cloudinary.models import CloudinaryField
 
 class Research_Center(models.Model):
     name = models.CharField(max_length=250)
-    image_url = CloudinaryField('image')
+    image = CloudinaryField('image', blank=True, null=True)
+    video = models.CharField("Embeded Url", max_length=500, null=True)
     short_description = models.TextField(blank=True, null=True)
     info = RichTextField()
 
@@ -15,7 +16,7 @@ class Research_Center(models.Model):
 
 class Activity(models.Model):
     title = models.CharField(max_length=200)
-    image_url = CloudinaryField('image')
+    image = CloudinaryField('image', blank=True, null=True)
     text = RichTextField()
     research_center = models.ForeignKey(Research_Center,on_delete=models.CASCADE)
 
@@ -26,4 +27,4 @@ class photos(models.Model):
     # title field
     title = models.CharField(max_length=100)
     #image field
-    image = CloudinaryField('image')
+    image = CloudinaryField('image', blank=True, null=True)

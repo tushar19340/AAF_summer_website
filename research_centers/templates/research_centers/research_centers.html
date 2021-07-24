@@ -18,13 +18,14 @@
     </div>
 </div>
 <div class="container mb-5">
+
     <div class="row row-cols-1 row-cols-md-3 gy-5">
 
         {% for center in research_centers %}
             <div class="col">
 
                 <div class="card h-100" >
-                    <img src="{{center.image_url}}" class="card-img-top" alt="...">
+                    <img src="{{center.image.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">{{center.name}}</h5>
                       <p class="card-text">{{center.short_description | slice:":100" | safe}} ...</p>
@@ -35,6 +36,12 @@
         {% endfor %}
         
     </div>
+
+    {% for pic in photos %}
+        <h2>{{pic.title}}</h2>
+        {{pic.image.url}}
+        <!-- <img src="{{pic.image.url}}" alt="fish"> -->
+    {% endfor %}
 
 </div>
 

@@ -28,20 +28,14 @@
             <div class="col-12 col-md-4">
                 <div class="join-us-card card m-auto">
                     <div class="ratio ratio-16x9">
-                        <iframe
-                            src="https://www.youtube.com/embed/Aa7OhQlIWzM"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                        ></iframe>
+                        {{center.video | safe}}
                     </div>
                     <div class="card-body">
                       <!-- <h5 class="card-title">JOIN US</h5> -->
-                      <p class="card-text">Some info about NGO</p>
+                      <p class="card-text text-center">{{center.short_description}}</p>
                       <div class="join">
                         <button class="btn btn-warning w-100">
-                          Join Us
+                          Join Research Centre
                         </button>
                       </div>
                     </div>
@@ -52,9 +46,9 @@
 
 </div>
 
+{% if activities %}
 <div class="activities-wrapper my-5">
     <div class="activities">
-        {% if activities %}
         <h5 class="text-center">Our activities and initiatives</h5>
         <p class="text-end"><a href="activities" >See more ..</a></p>
 
@@ -66,7 +60,7 @@
 
             <div class="col">
                 <div class="card m-auto h-100">
-                    <img src="{{activity.image_url}}" class="card-img-top" alt="...">
+                    <img src="{{activity.image.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <p class="card-text">{{activity.text | safe}}</p>
                     </div>
@@ -76,9 +70,9 @@
 
             {% endfor %}
         </div>
-        {% endif %}
     </div>
 </div>
+{% endif %}
 
 
 
