@@ -6,14 +6,10 @@ from research_centers import models
 def index(request):
 
     research_centers = models.Research_Center.objects.all()
-
-    photos = models.photos.objects.all()
-
-    print(research_centers[0].image)
+    
 
     context = {
-        'research_centers': research_centers,
-        'photos': photos
+        'research_centers': research_centers
     }
 
     return render(request, 'research_centers/research_centers.html', context)

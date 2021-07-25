@@ -11,7 +11,13 @@
 <div class="container">
     
     <div class="activity">
-        <img src="{{activity.image.url}}" alt="">
+        {% if activity.image %}
+            <img src="{{activity.image.url}}" class="card-img-top" alt="...">
+        {% else %}
+            <div class="ratio ratio-16x9">
+                {{activity.video | safe}}
+            </div>
+        {% endif %}
         <p>{{activity.text | safe}}</p>
     </div>
 

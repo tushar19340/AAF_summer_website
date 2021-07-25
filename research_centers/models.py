@@ -5,8 +5,10 @@ from cloudinary.models import CloudinaryField
 
 class Research_Center(models.Model):
     name = models.CharField(max_length=250)
-    image = CloudinaryField('image', blank=True, null=True)
-    video = models.CharField("Embeded Url", max_length=500, null=True)
+    image1 = CloudinaryField('image1', help_text='<b style="color:green;font-size: 12px">*IMPORTANT* All three image should be of equal ratio (preffered: 3 x 2 )</b>')
+    image2 = CloudinaryField('image2', blank=True, null=True)
+    image3 = CloudinaryField('image3', blank=True, null=True)
+    video = models.CharField("Embeded Url", max_length=500, blank=True, null=True)
     short_description = models.TextField(blank=True, null=True)
     info = RichTextField()
 
@@ -17,14 +19,9 @@ class Research_Center(models.Model):
 class Activity(models.Model):
     title = models.CharField(max_length=200)
     image = CloudinaryField('image', blank=True, null=True)
+    video = models.CharField(max_length=1000, blank=True, null=True, help_text='<b style="color:green;font-size: 12px">*IMPORTANT* Only add either Video link or Image, If you add both, only the image will be shown</b>')
     text = RichTextField()
     research_center = models.ForeignKey(Research_Center,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
-
-class photos(models.Model):
-    # title field
-    title = models.CharField(max_length=100)
-    #image field
-    image = CloudinaryField('image', blank=True, null=True)
