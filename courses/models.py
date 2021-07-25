@@ -18,8 +18,8 @@ class Course(models.Model):
     description = models.CharField("Course decription", max_length=200)
     playlist_id = models.CharField("Youtube playlist url", max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
-    image_link = CloudinaryField('image')
-    category = models.ManyToManyField(Category, null=True)
+    image = CloudinaryField('image')
+    category = models.ManyToManyField(Category, blank=True, null=True)
 
     def __str__(self):
         return self.title

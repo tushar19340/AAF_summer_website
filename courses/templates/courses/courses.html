@@ -14,39 +14,59 @@
         <h1 class="">Courses</h1>
     </div>
 </div>
-<div class="container">
-    <div class="row row-cols-1 row-cols-md-3 gy-5">
-        {% for course in courses%}
-            <div class="col">
-                <div class="card h-100">
-                    <img
-                        src={{course.image_link}}
-                        class="card-img-top"
-                        alt=""
-                    />
-                    <div class="card-body">
-                        <h5
-                            class="card-title text-center"
-                            style="margin-top: 1.2rem"
-                        >
-                            {{course.title}}
-                        </h5>
-                        <p class="card-text">
-                            {{course.description}}
-                        </p>
-                        <div class="text-center">
-                            <a href="{{ course.id }}" class="">
-                                <button class="btn-purple">
-                                    View Tutorials
-                                </button>
-                            </a>
+<div class="wrapper">
+
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <div class="row row-cols-1 row-cols-md-3">
+                {% for course in courses%}
+                    <div class="col">
+                        <div class="card h-100">
+                            <img
+                                src={{course.image.url}}
+                                class="card-img-top"
+                                alt=""
+                            />
+                            <div class="card-body">
+                                <h5
+                                    class="card-title text-center"
+                                    style="margin-top: 1.2rem"
+                                >
+                                    {{course.title}}
+                                </h5>
+                                <p class="card-text">
+                                    {{course.description}}
+                                </p>
+                                <div class="text-center">
+                                    <a href="{{ course.id }}" class="">
+                                        <button class="btn-purple">
+                                            View Tutorials
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="filter-div mb-5">
+                <h3 class="text-center">FILTER</h3>
+                <div class="filter-input">
+                    <form action="/courses/" method="GET">
+                        {% csrf_token %}
+                        {% for option in filters %}
+                            <input type="checkbox" id="{{option.name}}" name="filter_list" value="{{option.name}}" {% if option.name in active_filters %} checked {% endif %}>
+                            <label for="{{option.name}}">{{option.name}}</label><br>
+                        {% endfor %}
+                        <button class="btn btn-primary w-100" type="submit">Apply</button>
+                    </form>
                 </div>
             </div>
-        {%endfor%}
-    
+        </div>
     </div>
+
 </div>
 
 

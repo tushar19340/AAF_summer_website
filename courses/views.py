@@ -7,9 +7,29 @@ from courses import models
 import requests, json
 
 def courses(request):
-    courses= models.Course.objects.all()
+    Courses= models.Course.objects.all()
+    Categories = models.Category.objects.all()
+
+    requested_filters = request.GET.getlist('filter_list')
+
+    print(requested_filters)
+    filtered_courses = []
+    
+    if(len(requested_filters) > 0):
+        for course in Courses:
+            curr_categories = course.category.all()
+
+            for category in curr_categories:
+                if category.name in requested_filters:
+                    filtered_courses.append(course)
+                    break          
+        print("Hello from filter if")  
+        Courses = filtered_courses
+
     context = {
-        "courses": courses
+        "courses": Courses,
+        'filters': Categories,
+        'active_filters': requested_filters
     }
     return render(request, 'courses/courses.html', context)
 
