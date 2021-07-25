@@ -1,14 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from contests import models
-<<<<<<< HEAD
 from cloudinary import uploader
-=======
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
->>>>>>> 2dab8b20ec3ed570de0880481036402e041a79d7
 # Create your views here.
 
 def contests(request):
@@ -29,7 +22,6 @@ def contests(request):
                 if category.name in requested_filters:
                     filtered_contests.append(contest)
                     break          
-        print("Hello from filter if")  
         Contests = filtered_contests
 
     context = {

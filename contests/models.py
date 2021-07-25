@@ -1,4 +1,3 @@
-from xxlimited import Null
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import Permission, User
@@ -31,12 +30,8 @@ class Submission(models.Model):
     contest= models.ForeignKey(Contest,on_delete=models.CASCADE)
     caption=models.TextField(blank=True, null=True)
     likes=models.ManyToManyField(User, blank=True, null=True)
-<<<<<<< HEAD
-    image_url= models.TextField(blank=True, null=True)
-    image_id=models.CharField(null=True,default=Null,max_length=200)
-=======
     image= models.TextField(blank=True, null=True)
->>>>>>> 2dab8b20ec3ed570de0880481036402e041a79d7
+    image_id=models.CharField(null=True,default="",max_length=200)
     # video_url=models.TextField(blank=True, null=True)
     status=models.BooleanField(default=False)
 
