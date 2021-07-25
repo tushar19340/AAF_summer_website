@@ -27,16 +27,17 @@
             
             {% for talk in career_talks %}
                 <div class="row my-5 career-talk">
-                    {% if talk.embeded_video_link %}
+                    {% if talk.image %}
+                        
                         <div class="col-md-6 p-0">
-                            <div class="ratio ratio-16x9">
-                                {{talk.embeded_video_link | safe}}
+                            <div class="talk-image">
+                                <img src="{{talk.image.url}}" alt="">
                             </div>
                         </div>
                     {% else %}
                         <div class="col-md-6 p-0">
-                            <div class="talk-image">
-                                <img src="{{talk.image_url}}" alt="">
+                            <div class="ratio ratio-16x9">
+                                {{talk.embeded_video_link | safe}}
                             </div>
                         </div>
                     {% endif %}

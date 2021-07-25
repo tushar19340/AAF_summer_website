@@ -9,19 +9,20 @@
 {% block body %}
 
 <div class="container">
-    {% if career_talk.image_url %}
+    {% if career_talk.image %}
         <div class="talk-image">
-            <img src="{{career_talk.image_url}}" class="w-100" alt="">
+            <img src="{{career_talk.image.url}}" class="w-100" alt="">
         </div>
+    {% else %}
+        {% if career_talk.embeded_video_link %}
+            <div class="yt-video">
+                <div class="ratio ratio-16x9">
+                    {{career_talk.embeded_video_link}}
+                </div>
+            </div>
+        {% endif %}
     {% endif %}
 
-    {% if career_talk.embeded_video_link %}
-        <div class="yt-video">
-            <div class="ratio ratio-16x9">
-                {{career_talk.embeded_video_link}}
-            </div>
-        </div>
-    {% endif %}
     <div class="talk-details">
         <h1 id="head"><a href="">{{career_talk.title}}</a></h1>
 
