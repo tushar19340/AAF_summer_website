@@ -15,7 +15,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -161,3 +161,5 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 2
 LOGIN_REDIRECT_URL = '/contests'
 LOGOUT_REDIRECT_URL = '/contests'
+
+django_heroku.settings(locals())
