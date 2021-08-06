@@ -1,1 +1,1 @@
-web: gunicorn Project_name.wsgi --log-file -
+web: gunicorn AAF_summer_website.wsgi --log-file -
