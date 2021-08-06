@@ -140,9 +140,9 @@ STATIC_URL = '/static/'
 YOUTUBE_DATA_API_KEY = 'AIzaSyC3biMiTsP8TySKY3-HIaUVO1X-l6WvRwE'
 
 cloudinary.config( 
-  cloud_name = "tusharbharti4863", 
-  api_key = "671712797671574", 
-  api_secret = "plMDdx9JTJyTLcJt61pwnvX6xb8",
+  cloud_name = "asha-akanksha-foundation", 
+  api_key = "168986432131599", 
+  api_secret = "jWbGr2VB_ChVqQtZZzwBmCg-Ups",
   secure = True,
 )
 
