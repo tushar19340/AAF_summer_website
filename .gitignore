@@ -8,3 +8,5 @@ db.sqlite3-journal
 media
 djangoenv/
 */migrations
+keys.config
+secret_keys.py
